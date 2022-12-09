@@ -9,3 +9,11 @@ func PyMod(d, m int) int {
 	}
 	return res
 }
+
+// Transform a boolean to an integer
+func BoolToint(b bool) int {
+	if b {
+		return 1
+	}
+	return 0
+}

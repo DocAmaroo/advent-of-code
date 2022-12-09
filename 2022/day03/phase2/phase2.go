@@ -8,7 +8,7 @@ import (
 
 func main() {
 	ans := 0
-	lines := utils.ReadLines("input.txt")
+	lines := utils.Read("input.txt")
 	group := make([]string, 3)
 	for i, line := range lines {
 		idx := (i + 1) % 3

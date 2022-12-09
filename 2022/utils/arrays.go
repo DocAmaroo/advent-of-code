@@ -43,12 +43,18 @@ func ReverseSort(values []int) {
 }
 
 func MapInt(data []int, f func(int) int) []int {
-
 	mapped := make([]int, len(data))
-
 	for i, e := range data {
 		mapped[i] = f(e)
 	}
-
 	return mapped
+}
+
+func SliceAtoi(arr []string) (res []int) {
+	res = make([]int, 0, len(arr))
+	for _, a := range arr {
+		i := Atoi(a)
+		res = append(res, i)
+	}
+	return
 }

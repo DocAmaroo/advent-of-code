@@ -8,7 +8,7 @@ import (
 
 func main() {
 	ans := 0
-	lines := utils.ReadLines("input.txt")
+	lines := utils.Read("input.txt")
 
 	for _, line := range lines {
 		half := (len(line) / 2)
