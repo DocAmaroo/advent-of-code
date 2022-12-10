@@ -50,11 +50,11 @@ func MapInt(data []int, f func(int) int) []int {
 	return mapped
 }
 
-func SliceAtoi(arr []string) (res []int) {
-	res = make([]int, 0, len(arr))
+func SliceAtoi(arr []string) []int {
+	res := make([]int, 0, len(arr))
 	for _, a := range arr {
 		i := Atoi(a)
 		res = append(res, i)
 	}
-	return
+	return res
 }
