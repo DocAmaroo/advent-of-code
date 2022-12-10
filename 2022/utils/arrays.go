@@ -1,17 +1,16 @@
 package utils
 
 import (
-	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Atoi(str string) int {
-	val, err := strconv.Atoi(str)
-	if err != nil {
-		fmt.Println("Cannot convert int", err)
+func SliceAtoi(arr []string) []int {
+	res := make([]int, 0, len(arr))
+	for _, a := range arr {
+		i := Atoi(a)
+		res = append(res, i)
 	}
-	return val
+	return res
 }
 
 func Min(values []int) int {
@@ -48,13 +47,4 @@ func MapInt(data []int, f func(int) int) []int {
 		mapped[i] = f(e)
 	}
 	return mapped
-}
-
-func SliceAtoi(arr []string) []int {
-	res := make([]int, 0, len(arr))
-	for _, a := range arr {
-		i := Atoi(a)
-		res = append(res, i)
-	}
-	return res
 }

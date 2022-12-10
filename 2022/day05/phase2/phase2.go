@@ -8,8 +8,8 @@ import (
 )
 
 func readInstruction(s string) (m int, f int, t int) {
-	find := regexp.MustCompile(`\d+`).FindAllString(s, -1)
-	return utils.Atoi(find[0]), utils.Atoi(find[1]), utils.Atoi(find[2])
+	ins := utils.SliceAtoi(regexp.MustCompile(`\d+`).FindAllString(s, -1))
+	return ins[0], ins[1], ins[2]
 }
 
 func main() {
