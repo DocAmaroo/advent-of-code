@@ -18,7 +18,7 @@ import (
 func main() {
 	ans := 0
 	file := utils.ReadFile("../input.txt")
-	lines := utils.ParseByLines(file)
+	lines := utils.GetLines(file)
 
 	for _, line := range lines {
 		runes := []rune(line)

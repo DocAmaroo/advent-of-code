@@ -7,7 +7,7 @@ import (
 
 func main() {
 	file := utils.ReadFile("input.txt")
-	lines := utils.ParseByLines(file)
+	lines := utils.GetLines(file)
 
 	var calories []int
 	total := 0

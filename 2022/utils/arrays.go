@@ -48,3 +48,21 @@ func MapInt(data []int, f func(int) int) []int {
 	}
 	return mapped
 }
+
+func SumAll(data []int) int {
+	sum := 0
+	for _, v := range data {
+		sum += v
+	}
+	return sum
+}
+
+func FilterInt(data []int, f func(int) bool) []int {
+	res := make([]int, 0)
+	for _, v := range data {
+		if f(v) {
+			res = append(res, v)
+		}
+	}
+	return res
+}

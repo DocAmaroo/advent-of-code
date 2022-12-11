@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strings"
 )
 
 func ReadFile(filename string) (file *os.File) {
@@ -16,7 +17,7 @@ func ReadFile(filename string) (file *os.File) {
 	return file
 }
 
-func ParseByLines(file *os.File) []string {
+func GetLines(file *os.File) []string {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 
@@ -31,5 +32,14 @@ func ParseByLines(file *os.File) []string {
 // Read and parse a the (demo|input).txt file
 // Returns the lines of the file
 func Read(filename string) []string {
-	return ParseByLines(ReadFile("../" + filename))
+	return GetLines(ReadFile("../" + filename))
+}
+
+func RemoveBlankSpaces(l []string) [][]string {
+	res := make([][]string, len(l))
+	for i, v := range l {
+		res[i] = strings.Split(v, " ")
+	}
+
+	return res
 }
