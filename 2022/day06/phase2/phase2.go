@@ -1,14 +1,14 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/files"
 	"fmt"
 	"strings"
 )
 
 func main() {
 	ans := 0
-	stream := utils.Read("input.txt")[0]
+	stream := files.Read("input.txt")[0]
 	data := ""
 	for i, r := range stream {
 		idx := strings.IndexRune(data, r)

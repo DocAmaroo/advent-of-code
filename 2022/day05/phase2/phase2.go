@@ -1,20 +1,21 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/arrays"
+	"aoc/common/files"
 	"fmt"
 	"regexp"
 	"strings"
 )
 
 func readInstruction(s string) (m int, f int, t int) {
-	ins := utils.SliceAtoi(regexp.MustCompile(`\d+`).FindAllString(s, -1))
+	ins := arrays.ApplyAtoi(regexp.MustCompile(`\d+`).FindAllString(s, -1))
 	return ins[0], ins[1], ins[2]
 }
 
 func main() {
 	ans := ""
-	lines := utils.Read("input.txt")
+	lines := files.Read("input.txt")
 
 	sepIdx := 0
 	for lines[sepIdx] != "" {

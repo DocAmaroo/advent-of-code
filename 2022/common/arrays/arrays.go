@@ -1,13 +1,14 @@
-package utils
+package arrays
 
 import (
+	op "aoc/common/operators"
 	"sort"
 )
 
-func SliceAtoi(arr []string) []int {
+func ApplyAtoi(arr []string) []int {
 	res := make([]int, 0, len(arr))
 	for _, a := range arr {
-		i := Atoi(a)
+		i := op.Atoi(a)
 		res = append(res, i)
 	}
 	return res

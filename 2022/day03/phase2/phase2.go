@@ -1,14 +1,14 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/files"
 	"fmt"
 	"strings"
 )
 
 func main() {
 	ans := 0
-	lines := utils.Read("input.txt")
+	lines := files.Read("input.txt")
 	group := make([]string, 3)
 	for i, line := range lines {
 		idx := (i + 1) % 3

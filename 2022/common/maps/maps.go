@@ -1,6 +1,6 @@
-package utils
+package maps
 
-func MapGetValues(m map[string]int) []int {
+func GetValues(m map[string]int) []int {
 	res := make([]int, 0)
 	for _, v := range m {
 		res = append(res, v)

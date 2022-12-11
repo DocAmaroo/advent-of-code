@@ -1,14 +1,16 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/files"
+	"aoc/common/maps"
+	op "aoc/common/operators"
 	"fmt"
 	"sort"
 )
 
 func main() {
 	ans := 0
-	lines := utils.RemoveBlankSpaces(utils.Read("input.txt"))
+	lines := files.ReadAndSplit("input.txt", " ")
 
 	pwd := make([]string, 0)
 	sizes := make(map[string]int)
@@ -25,14 +27,14 @@ func main() {
 			resolve := ""
 			for _, p := range pwd[:] {
 				resolve += p
-				sizes[resolve] += utils.Atoi(l[0])
+				sizes[resolve] += op.Atoi(l[0])
 			}
 		}
 	}
 
 	curr := sizes["/"]
 	needed := 70000000 - 30000000
-	values := utils.MapGetValues(sizes)
+	values := maps.GetValues(sizes)
 	sort.Ints(values)
 	for _, v := range values {
 		if v >= curr-needed {

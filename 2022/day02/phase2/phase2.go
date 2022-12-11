@@ -1,14 +1,14 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/files"
+	"aoc/common/operators"
 	"fmt"
 )
 
 func main() {
 	ans := 0
-	file := utils.ReadFile("../input.txt")
-	lines := utils.GetLines(file)
+	lines := files.Read("input.txt")
 
 	for _, line := range lines {
 		runes := []rune(line)
@@ -16,11 +16,11 @@ func main() {
 		r := runes[2]
 
 		if r == 'X' {
-			ans += utils.PyMod((l-1), 3) + 1
+			ans += operators.PyMod((l-1), 3) + 1
 		} else if r == 'Y' {
 			ans += 3 + l + 1
 		} else {
-			ans += 6 + utils.PyMod((l+1), 3) + 1
+			ans += 6 + operators.PyMod((l+1), 3) + 1
 		}
 	}
 	fmt.Print(ans)

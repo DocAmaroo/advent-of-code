@@ -1,13 +1,14 @@
 package main
 
 import (
-	"aoc/utils"
+	"aoc/common/arrays"
+	"aoc/common/files"
 	"fmt"
+	"strconv"
 )
 
 func main() {
-	file := utils.ReadFile("input.txt")
-	lines := utils.GetLines(file)
+	lines := files.Read("day01/input.txt")
 
 	var calories []int
 	total := 0
@@ -16,12 +17,12 @@ func main() {
 			calories = append(calories, total)
 			total = 0
 		} else {
-			val := utils.Atoi(s)
+			val, _ := strconv.Atoi(s)
 			total += val
 		}
 	}
 
-	fmt.Println("Maximum calories:", utils.Max(calories))
-	utils.ReverseSort(calories)
-	fmt.Println("Total top 3:", calories[0]+calories[1]+calories[2])
+	fmt.Println("p1", arrays.Max(calories))
+	arrays.ReverseSort(calories)
+	fmt.Println("p2", calories[0]+calories[1]+calories[2])
 }

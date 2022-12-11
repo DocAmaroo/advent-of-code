@@ -1,4 +1,4 @@
-package utils
+package estrings
 
 import "unicode/utf8"
 

@@ -1,4 +1,4 @@
-package utils
+package operators
 
 import (
 	"fmt"
@@ -24,7 +24,7 @@ func PyMod(d, m int) int {
 }
 
 // Transform a boolean to an integer
-func BoolToint(b bool) int {
+func BoolToInt(b bool) int {
 	if b {
 		return 1
 	}
