@@ -1,6 +1,7 @@
 package files
 
 import (
+	op "aoc/common/operators"
 	"bufio"
 	"log"
 	"os"
@@ -21,6 +22,21 @@ func ReadAndSplit(filename string, pattern string) [][]string {
 	}
 
 	return res
+}
+
+func ReadAsMatrix(filename string) [][]int {
+	lines := Read(filename)
+	n := len(lines[0])
+	m := make([][]int, n)
+
+	for i, values := range lines {
+		for j, v := range values {
+			m[i] = append(m[i], op.Atoi(string(v)))
+			j++
+		}
+	}
+
+	return m
 }
 
 func GetFile(filename string) (file *os.File) {

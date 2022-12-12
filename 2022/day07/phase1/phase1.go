@@ -9,7 +9,7 @@ import (
 func main() {
 	ans := 0
 	lines := files.ReadAndSplit("input.txt", " ")
-
+	fmt.Println(lines)
 	pwd := make([]string, 0)
 	sizes := make(map[string]int)
 	for _, l := range lines {
