@@ -25,31 +25,23 @@ func sign(x int) int {
 
 func main() {
 	input := files.Read("input.txt")
-	path := make(map[image.Point]int)
-	H := image.Point{0, 0}
-	T := image.Point{0, 0}
+	path := map[image.Point]struct{}{}
+	rope := make([]image.Point, 2)
+
 	for _, in := range input {
 		var d rune
 		var s int
 		fmt.Sscanf(in, "%c %d", &d, &s)
 
 		for i := 0; i < s; i++ {
-
-			H = H.Add(dirs[d])
-			if d := H.Sub(T); op.Abs(d.X) > 1 || op.Abs(d.Y) > 1 {
-				T = T.Add(image.Point{sign(d.X), sign(d.Y)})
+			rope[0] = rope[0].Add(dirs[d])
+			if d := rope[0].Sub(rope[1]); op.Abs(d.X) > 1 || op.Abs(d.Y) > 1 {
+				rope[1] = rope[1].Add(image.Point{sign(d.X), sign(d.Y)})
 			}
 
-			path[T]++
+			path[rope[1]] = struct{}{}
 		}
 
-	}
-
-	ans := 0
-	for _, v := range path {
-		if v > 1 {
-			ans++
-		}
 	}
 
 	fmt.Println(len(path))
