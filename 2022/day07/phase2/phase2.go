@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	ans := 0
 	lines := files.ReadAndSplit("input.txt", " ")
-
+	ans := 0
 	pwd := make([]string, 0)
 	sizes := make(map[string]int)
+
 	for _, l := range lines {
 		if l[0] == "dir" || l[1] == "ls" {
 			continue
