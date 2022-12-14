@@ -30,3 +30,10 @@ func BoolToInt(b bool) int {
 	}
 	return 0
 }
+
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
