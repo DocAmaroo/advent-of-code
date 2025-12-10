@@ -1,55 +1,47 @@
-async function readInput(filename: string) {
-  const file = Bun.file(filename);
-  return file.text();
-}
+type Rotation = { direction: 1 | -1; value: number };
 
-type ParsedInput = { direction: "L" | "R"; value: number };
-
-function parseInput(input: string): ParsedInput[] {
-  return input
+async function readInput(filename: string): Promise<Rotation[]> {
+  const content = await Bun.file(filename).text();
+  return content
     .split("\n")
     .filter(Boolean)
     .map((v) => {
-      const match = v.match(/(L|R)(\d*)/);
-      if (!match) {
-        throw new Error(`Regex failed with ${v}`);
-      }
-
-      return { direction: match[1], value: Number(match[2]) } as ParsedInput;
+      let [, direction, value] = v.match(/(L|R)(\d+)/) as RegExpMatchArray;
+      return { direction: direction === "L" ? -1 : 1, value: Number(value) };
     });
 }
 
+function part1(rotations: Rotation[]) {
+  let password = 0;
+  rotations.reduce((acc, curr) => {
+    let next = (acc + curr.direction * curr.value) % 100;
+    if (next < 0) next += 100;
+    if (next === 0) password++;
+    return next;
+  }, 50);
+
+  console.log("part1", password);
+}
+
+function part2(rotations: Rotation[]) {
+  let password = 0;
+  rotations.reduce((acc, curr) => {
+    for (let i = 0; i < curr.value; i++) {
+      acc += curr.direction;
+      if (acc === -1) acc = 99;
+      if (acc === 100) acc = 0;
+      if (acc === 0) password++;
+    }
+    return acc;
+  }, 50);
+
+  console.log("part2", password);
+}
+
 async function main() {
-  const input = await readInput("input.test");
-  const parsed = parseInput(input).splice(0, 20);
-  console.log(parsed.length);
-
-  const start = 50;
-  let i = start;
-  let dialCount = 0;
-  parsed.forEach(({ direction, value }) => {
-    if (direction === "L") {
-      i -= value;
-    } else {
-      i += value;
-    }
-
-    if (i > 99) {
-      i -= 100;
-    }
-
-    if (i < 0) {
-      i += 100;
-    }
-
-    if (i === 0) {
-      dialCount++;
-    }
-
-    console.log(`${direction}${value} => i=${i}`);
-  });
-
-  console.log(dialCount);
+  const input = await readInput("input");
+  part1(input);
+  part2(input);
 }
 
 main();
